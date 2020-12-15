@@ -17,7 +17,7 @@ Upon approval, I will create a more concrete implementation plan and begin devel
 4. Extend functionality to include different types of analysis (regressions, clustering, possibly more), add links to additional resources, etc.
 
 ## Questions and Considerations
-These are my current questions and things to consider for the project: 
+These are my current questions surrounding the project:
 
 1. Are there restrictions to *where* this can be hosted? (both the source code, and the actual application)
 
