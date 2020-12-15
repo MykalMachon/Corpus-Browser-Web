@@ -20,6 +20,7 @@ Upon approval, I will create a more concrete implementation plan and begin devel
 These are my current questions surrounding the project:
 
 1. Are there restrictions to *where* this can be hosted? (both the source code, and the actual application)
+2. What license should this be released under? I chose GPLv3 for now because it ensures the software remains open source and free for everybody. 
 
 ## Contributors
 This project was primarily built during a UFV Research Contract with [Gabriel Murray, PhD and MSc (Edinburgh)](https://www.ufv.ca/cis/faculty-and-staff/murray-gabriel.htm)
