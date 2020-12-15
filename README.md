@@ -12,14 +12,19 @@ The following is a basic implementation plan for a web-based version of Corpus B
 Upon approval, I will create a more concrete implementation plan and begin development.
 
 1. Dive into Corpus Browser's source code and extract composable python functionality (linear-regression via scikit-learn, downloading and updating Corpora, etc) 
-2. Develop a python-based (django) API that can execute these functions upon HTTP requests (Considerations: mass storage, concurrency, authentication)   
+2. Develop a python-based (flask) API that can execute these functions upon HTTP requests (Considerations: mass storage, concurrency, authentication)   
 3. Develop a react.js based web interface that has access to these API's and acts as the GUI portion of the project (Considerations: performance, user-experience, documentation)
 4. Extend functionality to include different types of analysis (regressions, clustering, possibly more), add links to additional resources, etc.
+
+## Questions and Considerations
+These are my current questions and things to consider for the project: 
+
+1. Are there restrictions to *where* this can be hosted? (both the source code, and the actual application)
 
 ## Contributors
 This project was primarily built during a UFV Research Contract with [Gabriel Murray, PhD and MSc (Edinburgh)](https://www.ufv.ca/cis/faculty-and-staff/murray-gabriel.htm)
 
-Corpus-Browser-Web is based on a project called "Corpus Browser" that is being developed by another research student at UFV *(insert Jeremy's full name and link if he'd like)* 
+Corpus-Browser-Web is based on a project called "Corpus Browser" that is being developed by another research student at UFV *(insert Jeremy's full name and link to relevant profile if he'd like)* 
 It's extremely likely that Corpus-Browser-Web will share code with Corpus Browser: *more on this later*.
 
 
