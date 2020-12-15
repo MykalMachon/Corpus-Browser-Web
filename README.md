@@ -24,7 +24,7 @@ These are my current questions and things to consider for the project:
 ## Contributors
 This project was primarily built during a UFV Research Contract with [Gabriel Murray, PhD and MSc (Edinburgh)](https://www.ufv.ca/cis/faculty-and-staff/murray-gabriel.htm)
 
-Corpus-Browser-Web is based on a project called "Corpus Browser" that is being developed by another research student at UFV *(insert Jeremy's full name and link to relevant profile if he'd like)* 
+Corpus-Browser-Web is based on a project called "Corpus Browser" that is being developed by another researcher at UFV *(insert Jeremy's full name and link to relevant profile if he'd like)* 
 It's extremely likely that Corpus-Browser-Web will share code with Corpus Browser: *more on this later*.
 
 
