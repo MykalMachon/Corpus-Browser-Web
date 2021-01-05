@@ -12,7 +12,8 @@ const CorporaSelector = ({ corpora, setCorpus }) => {
                 }}
               >
                 {dataset.name}
-              </button>
+              </button>{' '}
+              - <a href={dataset.url}>download corpus</a>
             </li>
           );
         })}
