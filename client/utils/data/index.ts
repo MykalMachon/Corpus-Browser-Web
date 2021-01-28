@@ -1,16 +1,34 @@
 import fetch from 'isomorphic-fetch';
 
 export const getCorporaDownloadUrls = async () => {
-  const corporaResponse = await fetch(
-    'https://zissou.infosci.cornell.edu/convokit/datasets/download_config.json'
-  );
+  let url =
+    process.env.NODE_ENV == 'development'
+      ? 'http://localhost:5000/dataset/list'
+      : 'http://cbw.mykalmachon.com/dataset/list';
+
+  const corporaResponse = await fetch(url);
   const corporaInfo = await corporaResponse.json();
-  const corporaDatasets = corporaInfo.DatasetURLs;
-  const corporaDatasetUrls = Object.keys(corporaDatasets).map((corporaName) => {
-    return {
-      name: corporaName,
-      url: corporaDatasets[`${corporaName}`],
-    };
-  });
-  return corporaDatasetUrls;
+  return corporaInfo;
+};
+
+export const getCorporaUrls = async (cid) => {
+  let url =
+    process.env.NODE_ENV == 'development'
+      ? `http://localhost:5000/dataset/${cid}`
+      : `http://cbw.mykalmachon.com/dataset/${cid}`;
+
+  const corporaResponse = await fetch(url);
+  const corporaUrls = await corporaResponse.json();
+  return corporaUrls;
+};
+
+export const getCorporaSubset = async (cid, subsetId) => {
+  let url =
+    process.env.NODE_ENV == 'development'
+      ? `http://localhost:5000/dataset/${cid}/${subsetId}`
+      : `http://cbw.mykalmachon.com/dataset/${cid}/${subsetId}`;
+
+  const corporaResponse = await fetch(url);
+  const corporaSubset = await corporaResponse.json();
+  return corporaSubset;
 };
