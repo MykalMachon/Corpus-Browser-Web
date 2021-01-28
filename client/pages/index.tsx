@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { GetServerSideProps } from 'next';
+import Link from 'next/link';
 import { getCorporaDownloadUrls } from '@utils/data';
 import CorporaSelector from '@components/corpora/CorporaSelector';
 import CorporaEditor from '@components/corpora/CorporaEditor';
@@ -10,18 +11,22 @@ const Index = ({ corporaDatasetUrls }) => {
     string
   > | null>(null);
 
+  console.log(corporaDatasetUrls);
+
   return (
     <>
       <h1>Corpus Browser Web</h1>
       <p>This is the corpus browser web app!</p>
-      {selectedCorpus ? (
-        <CorporaEditor corpora={selectedCorpus} />
-      ) : (
-        <CorporaSelector
-          corpora={corporaDatasetUrls}
-          setCorpus={setSelectedCorpus}
-        />
-      )}
+      <hr />
+      <ul>
+        {corporaDatasetUrls.datasets.map((dataset) => (
+          <li key={dataset}>
+            <Link href={`/corpus/${dataset}`}>
+              <a>{dataset}</a>
+            </Link>
+          </li>
+        ))}
+      </ul>
     </>
   );
 };
