@@ -12,7 +12,6 @@ def list_datasets():
 
 
 def get_dataset(name):
-    # datasetPath = f"{os.getcwd()}/dataset/{name}"
     dataset_dict = {
         'conversations': f"/dataset/{name}/conversations",
         'corpus': f"/dataset/{name}/corpus",
@@ -23,13 +22,23 @@ def get_dataset(name):
     return dataset_dict
 
 
-def get_dataset_subset(name, subset):
-    extension = '.jsonl' if name == 'utterances' else '.json'
-    print(f"{subset}{extension}")
-    subset_dict = {
-        'data': read_JSON(f"{os.getcwd()}/dataset/{name}", f"{subset}{extension}")
+def get_dataset_subset(name, subset, pageInfo):
+    extension = '.jsonl' if subset == 'utterances' else '.json'
+    complete_subset_data_list = read_JSON(f"{os.getcwd()}/dataset/{name}", f"{subset}{extension}")
+
+    page_num = pageInfo['pageNum'] - 1 if 'pageNum' in pageInfo else 0
+    page_size = pageInfo['pageSize'] if 'pageSize' in pageInfo else 50
+    start_index = page_num * page_size
+    end_index = start_index + page_size
+
+    paged_subset_data_list = complete_subset_data_list[start_index:end_index]
+    paged_data_dict = {
+        'data': paged_subset_data_list
     }
-    return subset_dict
+
+    print(f"The length is as follows: ${len(paged_subset_data_list)}")
+
+    return paged_data_dict
 
 
 def refresh_dataset():

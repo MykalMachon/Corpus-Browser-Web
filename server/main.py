@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request
 import os
 
 app = Flask(__name__)
@@ -27,7 +27,9 @@ def run_get_dataset(name):
 # Get a table in a specific dataset, return the JSON
 @app.route('/dataset/<name>/<subset>', methods=['GET'])
 def run_get_dataset_subset(name, subset):
-    return dataset.get_dataset_subset(name, subset)
+    # this only returns the first 50 items
+    # TODO allow users to send in their paging info with request.JSON() parsing
+    return dataset.get_dataset_subset(name, subset, {'pageNum': 1, 'pageSize': 50})
 
 
 # re-fetch data from the source, and reformat it
