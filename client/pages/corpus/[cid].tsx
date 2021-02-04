@@ -2,22 +2,20 @@ import { GetServerSideProps } from 'next';
 import { useRouter } from 'next/router';
 
 import { getCorporaSubset, getCorporaUrls } from '@utils/data';
+import CorporaLayout from '@components/layout/Corpora/CorporaLayout';
+import { useEffect, useState } from 'react';
 
 const CorporaPage = ({ datasetInfo }) => {
   const router = useRouter();
   const { cid } = router.query;
-  console.log(datasetInfo);
+
+  const [rows, setRows] = useState(() =>
+    Object.keys(datasetInfo.data[0]).map((idx) => datasetInfo.data[0][idx])
+  );
 
   return (
     <main>
-      <h1>{cid}</h1>
-      <hr />
-      <h3>Conversations</h3>
-      <ul>
-        {Object.keys(datasetInfo.data[0]).map((idx) => (
-          <li>{JSON.stringify(datasetInfo.data[0][idx])}</li>
-        ))}
-      </ul>
+      <CorporaLayout corporaData={rows} />
     </main>
   );
 };
