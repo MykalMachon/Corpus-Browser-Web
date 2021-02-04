@@ -30,5 +30,8 @@ export const getCorporaSubset = async (cid, subsetId) => {
 
   const corporaResponse = await fetch(url);
   const corporaSubset = await corporaResponse.json();
-  return corporaSubset;
+  const dataArray = Object.keys(corporaSubset.data[0]).map(
+    (idx) => corporaSubset.data[0][idx]
+  );
+  return dataArray;
 };

@@ -44,9 +44,8 @@ const CorporaTable: FC<CorporaTableProps> = ({ rows: rawRows }) => {
   );
 
   useEffect(() => {
-    console.log(columnData);
-    console.log(rowData);
-  }, []);
+    console.log(rows);
+  }, [rawRows]);
 
   const {
     getTableProps,
