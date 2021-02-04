@@ -1,9 +1,9 @@
 from flask import Flask, request
-import os
+from .routes import dataset
+from flask_cors import CORS
 
 app = Flask(__name__)
-# Local Modules
-import dataset
+CORS(app, resources={r"/dataset/*": {"origins": "*"}})
 
 
 @app.route('/')

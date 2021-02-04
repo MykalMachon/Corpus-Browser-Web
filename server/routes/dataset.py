@@ -1,5 +1,5 @@
 import os
-from util import read_JSON
+from ..utils.json import read_JSON
 
 
 def list_datasets():
@@ -22,12 +22,12 @@ def get_dataset(name):
     return dataset_dict
 
 
-def get_dataset_subset(name, subset, pageInfo):
+def get_dataset_subset(name, subset, page_info):
     extension = '.jsonl' if subset == 'utterances' else '.json'
     complete_subset_data_list = read_JSON(f"{os.getcwd()}/dataset/{name}", f"{subset}{extension}")
 
-    page_num = pageInfo['pageNum'] - 1 if 'pageNum' in pageInfo else 0
-    page_size = pageInfo['pageSize'] if 'pageSize' in pageInfo else 50
+    page_num = page_info['pageNum'] - 1 if 'pageNum' in page_info else 0
+    page_size = page_info['pageSize'] if 'pageSize' in page_info else 50
     start_index = page_num * page_size
     end_index = start_index + page_size
 
