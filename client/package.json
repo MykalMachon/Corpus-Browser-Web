@@ -20,6 +20,10 @@
   },
   "homepage": "https://github.com/MykalMachon/Corpus-Browser-Web#readme",
   "dependencies": {
+    "@chakra-ui/react": "^1.2.1",
+    "@emotion/react": "^11.1.4",
+    "@emotion/styled": "^11.0.0",
+    "framer-motion": "^3.3.0",
     "isomorphic-fetch": "^3.0.0",
     "next": "^10.0.3",
     "react": "^17.0.1",

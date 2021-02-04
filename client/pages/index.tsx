@@ -2,8 +2,15 @@ import { useEffect, useState } from 'react';
 import { GetServerSideProps } from 'next';
 import Link from 'next/link';
 import { getCorporaDownloadUrls } from '@utils/data';
-import CorporaSelector from '@components/corpora/CorporaSelector';
-import CorporaEditor from '@components/corpora/CorporaEditor';
+// CHAKRA COMPONENTS
+import {
+  Box,
+  Container,
+  Divider,
+  Heading,
+  Text,
+  Link as ChakraLink,
+} from '@chakra-ui/react';
 
 const Index = ({ corporaDatasetUrls }) => {
   const [selectedCorpus, setSelectedCorpus] = useState<Record<
@@ -14,20 +21,27 @@ const Index = ({ corporaDatasetUrls }) => {
   console.log(corporaDatasetUrls);
 
   return (
-    <>
-      <h1>Corpus Browser Web</h1>
-      <p>This is the corpus browser web app!</p>
-      <hr />
+    <Container>
+      <Box>
+        <Heading as="h1" size="xl">
+          Corpus Browser Web
+        </Heading>
+        <Text py="2">
+          This is the corpus browser web app! Select the corpus you would like
+          to work with:
+        </Text>
+      </Box>
+      <Divider />
       <ul>
         {corporaDatasetUrls.datasets.map((dataset) => (
           <li key={dataset}>
             <Link href={`/corpus/${dataset}`}>
-              <a>{dataset}</a>
+              <ChakraLink color={'teal.500'}>{dataset}</ChakraLink>
             </Link>
           </li>
         ))}
       </ul>
-    </>
+    </Container>
   );
 };
 
