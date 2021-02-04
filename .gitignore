@@ -106,3 +106,4 @@ dist
 # Python cache files
 venv/
 __pycache__/
+client/.env.local
