@@ -20,8 +20,8 @@ const CorporaLayout: FC<CorporaLayoutProps> = ({ subsetRows }) => {
 
   const corporaReducer = (state, action) => {
     switch (action.type) {
-      case 'SET_CORPUS':
-        return { ...state, corpus: action.payload.name };
+      case 'SET_CORPORA':
+        return { ...state, corpora: action.payload.name };
       case 'SET_SUBSET':
         return { ...state, subset: action.payload.name };
       case 'UPDATE_DATA':

@@ -6,6 +6,7 @@ import {
   Grid,
   Breadcrumb,
   BreadcrumbItem,
+  Badge,
 } from '@chakra-ui/react';
 import { FC, ChangeEvent } from 'react';
 
@@ -49,21 +50,23 @@ const CorporaNav: FC<CorporaNavProps> = ({ dispatch }) => {
         <Flex>
           <Breadcrumb>
             <BreadcrumbItem>
-              {' '}
               <Select
+                size="sm"
                 defaultValue="Gap-Corpus"
                 onChange={dispatchCorporaUpdate}
               >
                 <option>Gap-Corpus</option>
+                <option disabled>PersuasionForGood-Corpus (WIP)</option>
               </Select>
             </BreadcrumbItem>
             <BreadcrumbItem>
-              {' '}
-              <Select onChange={dispatchSubsetUpdate}>
+              <Select size="sm" onChange={dispatchSubsetUpdate}>
                 <option value="conversations">Conversations</option>
-                <option value="utterances">Utterances</option>
                 <option value="speakers">Speakers</option>
                 <option value="corpus">Corpus</option>
+                <option value="utterances" disabled>
+                  Utterances (WIP)
+                </option>
               </Select>
             </BreadcrumbItem>
           </Breadcrumb>
@@ -74,7 +77,9 @@ const CorporaNav: FC<CorporaNavProps> = ({ dispatch }) => {
           Corpus Browser
         </Heading>
       </Center>
-      <Center justifySelf="end">Annotations</Center>
+      <Center justifySelf="end">
+        <Badge colorScheme="teal">Annotation View</Badge>
+      </Center>
     </Grid>
   );
 };
