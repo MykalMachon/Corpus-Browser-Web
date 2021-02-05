@@ -29,7 +29,7 @@ def run_get_dataset(name):
 def run_get_dataset_subset(name, subset):
     # this only returns the first 50 items
     # TODO allow users to send in their paging info with request.JSON() parsing
-    return dataset.get_dataset_subset(name, subset, {'pageNum': 1, 'pageSize': 50})
+    return dataset.get_dataset_subset(name, subset, {'pageNum': 1, 'pageSize': 5})
 
 
 # re-fetch data from the source, and reformat it
