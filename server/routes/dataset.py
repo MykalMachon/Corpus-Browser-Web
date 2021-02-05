@@ -26,6 +26,7 @@ def get_dataset_subset(name, subset, page_info):
     extension = '.jsonl' if subset == 'utterances' else '.json'
     complete_subset_data_list = read_JSON(f"{os.getcwd()}/dataset/{name}", f"{subset}{extension}")
 
+    # TODO format this better- it doesn't work with all datasets right now
     page_num = page_info['pageNum'] - 1 if 'pageNum' in page_info else 0
     page_size = page_info['pageSize'] if 'pageSize' in page_info else 50
     start_index = page_num * page_size
@@ -35,8 +36,6 @@ def get_dataset_subset(name, subset, page_info):
     paged_data_dict = {
         'data': paged_subset_data_list
     }
-
-    print(f"The length is as follows: ${len(paged_subset_data_list)}")
 
     return paged_data_dict
 
