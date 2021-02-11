@@ -5,7 +5,6 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app, resources={r"/dataset/*": {"origins": "*"}})
 
-
 @app.route('/')
 def hello_world():
     return '<main><h1>Corpus-Browser-Web API</h1> <p>This is an API for the Corpus-Browser-Web project: <a ' \
