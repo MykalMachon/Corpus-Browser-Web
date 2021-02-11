@@ -1,5 +1,5 @@
 import os
-from ..utils.json import read_JSON
+from utils.json import read_JSON
 
 
 def list_datasets():
