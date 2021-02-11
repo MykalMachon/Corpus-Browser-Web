@@ -1,4 +1,4 @@
-version: "2"
+version: '2'
 
 services:
   flask:
@@ -14,11 +14,18 @@ services:
     image: nginx:1.17
     container_name: nginx
     ports:
-      - "80:80"
-      - "443:443"
+      - '80:80'
+      - '443:443'
     volumes:
       - ./static:/var/www/static
       - ./ssl:/ssl
       - ./nginx:/etc/nginx/conf.d
+      - ./data/certbot/conf:/etc/letsencrypt
+      - ./data/certbot/www:/var/www/certbot
     depends_on:
       - flask
+  certbot:
+    image: certbot/certbot
+    volumes:
+      - ./data/certbot/conf:/etc/letsencrypt
+      - ./data/certbot/www:/var/www/certbot
