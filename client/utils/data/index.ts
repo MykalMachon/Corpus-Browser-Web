@@ -4,7 +4,7 @@ export const getCorporaDownloadUrls = async () => {
   let url =
     process.env.NODE_ENV == 'development'
       ? 'http://localhost:5000/dataset/list'
-      : 'http://cbw.mykalmachon.com/dataset/list';
+      : 'http://api.cbw.mykalmachon.com/dataset/list';
 
   const corporaResponse = await fetch(url);
   const corporaInfo = await corporaResponse.json();
@@ -15,7 +15,7 @@ export const getCorporaUrls = async (cid) => {
   let url =
     process.env.NODE_ENV == 'development'
       ? `http://localhost:5000/dataset/${cid}`
-      : `http://cbw.mykalmachon.com/dataset/${cid}`;
+      : `http://api.cbw.mykalmachon.com/dataset/${cid}`;
 
   const corporaResponse = await fetch(url);
   const corporaUrls = await corporaResponse.json();
@@ -26,7 +26,7 @@ export const getCorporaSubset = async (cid, subsetId) => {
   let url =
     process.env.NODE_ENV == 'development'
       ? `http://localhost:5000/dataset/${cid}/${subsetId}`
-      : `http://cbw.mykalmachon.com/dataset/${cid}/${subsetId}`;
+      : `http://api.cbw.mykalmachon.com/dataset/${cid}/${subsetId}`;
 
   const corporaResponse = await fetch(url);
   const corporaSubset = await corporaResponse.json();
