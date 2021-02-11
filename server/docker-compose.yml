@@ -6,6 +6,19 @@ services:
     container_name: flask
     build: .
     volumes:
-      - ./:/deploy
+      - ./app-folder:/deploy
     ports:
       - 8080:8080
+  nginx:
+    restart: always
+    image: nginx:1.17
+    container_name: nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./app-folder/static:/var/www/static
+      - ./app-folder/ssl:/ssl
+      - ./nginx:/etc/nginx/conf.d
+    depends_on:
+      - flask
