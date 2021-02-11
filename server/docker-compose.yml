@@ -6,7 +6,7 @@ services:
     container_name: flask
     build: .
     volumes:
-      - ./app-folder:/deploy
+      - ./:/deploy
     ports:
       - 8080:8080
   nginx:
@@ -17,8 +17,8 @@ services:
       - "80:80"
       - "443:443"
     volumes:
-      - ./app-folder/static:/var/www/static
-      - ./app-folder/ssl:/ssl
+      - ./static:/var/www/static
+      - ./ssl:/ssl
       - ./nginx:/etc/nginx/conf.d
     depends_on:
       - flask
