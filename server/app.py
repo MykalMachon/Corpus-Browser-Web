@@ -1,5 +1,6 @@
 from flask import Flask, request
 from routes import dataset
+from routes import download
 from flask_cors import CORS
 
 app = Flask(__name__)
@@ -9,6 +10,15 @@ CORS(app, resources={r"/dataset/*": {"origins": "*"}})
 def hello_world():
     return '<main><h1>Corpus-Browser-Web API</h1> <p>This is an API for the Corpus-Browser-Web project: <a ' \
            'href="https://github.com/MykalMachon/Corpus-Browser-Web">see here for more info</a></p></main> '
+
+
+@app.route('/download/<name>')
+def download_dataset(name):
+    download.download_corpus(name)
+    return {
+        "status": "okay",
+        "statusCode": 200
+    }
 
 
 # get list of currently supported datasets
