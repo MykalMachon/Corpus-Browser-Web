@@ -15,7 +15,7 @@ type CorporaNavProps = {
   state: any;
 };
 
-const CorporaNav: FC<CorporaNavProps> = ({ dispatch }) => {
+const CorporaNav: FC<CorporaNavProps> = ({ dispatch, state }) => {
   const dispatchSubsetUpdate = (e: ChangeEvent<HTMLSelectElement>) => {
     dispatch({
       type: 'SET_SUBSET',
@@ -36,7 +36,7 @@ const CorporaNav: FC<CorporaNavProps> = ({ dispatch }) => {
 
   return (
     <Grid
-      gridTemplateColumns="repeat(3, 1fr)"
+      gridTemplateColumns="repeat(2, 1fr)"
       px={6}
       py={4}
       borderBottom="1px"
@@ -52,15 +52,22 @@ const CorporaNav: FC<CorporaNavProps> = ({ dispatch }) => {
             <BreadcrumbItem>
               <Select
                 size="sm"
-                defaultValue="Gap-Corpus"
+                defaultValue={state.corpora}
                 onChange={dispatchCorporaUpdate}
+                disabled={!state.isLoaded}
               >
-                <option>Gap-Corpus</option>
-                <option disabled>PersuasionForGood-Corpus (WIP)</option>
+                <option value="gap-corpus">Gap-Corpus</option>
+                <option value="persuasionforgood-corpus">
+                  PersuasionForGood-Corpus
+                </option>
               </Select>
             </BreadcrumbItem>
             <BreadcrumbItem>
-              <Select size="sm" onChange={dispatchSubsetUpdate}>
+              <Select
+                size="sm"
+                onChange={dispatchSubsetUpdate}
+                disabled={!state.isLoaded}
+              >
                 <option value="conversations">Conversations</option>
                 <option value="speakers">Speakers</option>
                 <option value="corpus">Corpus</option>
@@ -72,11 +79,7 @@ const CorporaNav: FC<CorporaNavProps> = ({ dispatch }) => {
           </Breadcrumb>
         </Flex>
       </Center>
-      <Center>
-        <Heading as="h2" size="md">
-          Corpus Browser
-        </Heading>
-      </Center>
+
       <Center justifySelf="end">
         <Badge colorScheme="teal">Annotation View</Badge>
       </Center>
